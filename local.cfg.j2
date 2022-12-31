@@ -1,0 +1,13 @@
+frontend lb
+        bind *:8080
+        timeout client 10s
+        default_backend myweb
+
+backend myweb
+        balance roundrobin
+        timeout connect 10s
+        timeout server 10s
+
+{% for x in groups['web'] %}
+        server app{{ loop.index }} {{ x }}:80
+{% endfor %}
