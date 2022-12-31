@@ -6,7 +6,7 @@
       state: present
   - name: copying the files
     template:
-      src: "/root/code/hello.cfg.j2"
+      src: "/root/code/local.cfg.j2"
       dest: "/etc/haproxy/haproxy.cfg"
   - name: starting service
     service:
